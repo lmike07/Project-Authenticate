@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { authSchema } from "../schemas/AuthSchema";
+import { authSchema, authSchemaRefreshToken } from "../schemas/AuthSchema";
 import AuthService from "../services/AuthService";
+import { ref } from "yup";
 
 
 class AuthController {
@@ -19,7 +20,14 @@ class AuthController {
     }
 
     async refreshToken(req: Request, res: Response) {
+        try {
 
+            const dataValidate = await authSchemaRefreshToken.validate(req.body, {stripUnknown: true});
+
+            
+        } catch (err: any) {
+            res.status(400).json({error: err.message});
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 import InMemoryUserRepository from "../repositories/in-memory/InMemoryUserRepository";
 import { AuthInterface } from "../schemas/AuthSchema";
 import bcrypt from 'bcrypt';
+import { generateToken } from "./helpers/AuthHelpers";
 
 
 class AuthService {
@@ -20,6 +21,11 @@ class AuthService {
         }
 
         dataUser.password = "Password protected";
+
+        const token = generateToken(dataUser, process.env.JWT_TOKEN_EXPIRES_IN as string);
+        const refresh_token = generateToken(dataUser, process.env.JWT_REFRESH_TOKEN_EXPIRES_IN as string);
+
+        return {token, refresh_token};
         
         return {user: dataUser, status: "Authenticated successfully!"};
     }

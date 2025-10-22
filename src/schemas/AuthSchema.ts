@@ -5,4 +5,10 @@ export const authSchema = object().shape({
     password: string().min(6, "Password is wrong!").required(),
 });
 
+export const authSchemaRefreshToken = object().shape({
+    token: string().required()
+})
+
 export type AuthInterface = Yup.InferType<typeof authSchema>;
+
+export type AuthRefreshTokenInterface = Yup.InferType<typeof authSchemaRefreshToken>;
