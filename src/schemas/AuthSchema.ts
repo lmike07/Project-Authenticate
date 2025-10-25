@@ -6,7 +6,8 @@ export const authSchema = object().shape({
 });
 
 export const authSchemaRefreshToken = object().shape({
-    token: string().required()
+    token: string().required(),
+    refresh_token: string().required()
 })
 
 export type AuthInterface = Yup.InferType<typeof authSchema>;

@@ -6,7 +6,7 @@ class InMemoryUserRepository {
     private _users: User[];
 
     constructor() {
-        this._users = [{name: "Maycon", email: "exemple@contact.com",
+        this._users = [{name: "Maycon", email: "example@contact.com",
         password: "$2b$10$IhiarM1JywkChisyGUJeEek.PKCfEIA6u4jZASLAosCyIkmhKZsYe"}];
     }
 
